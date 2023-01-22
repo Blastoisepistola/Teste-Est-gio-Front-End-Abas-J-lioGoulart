@@ -1,0 +1,144 @@
+<html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            background-image: url(img/soc7.webp);
+            background-size: cover;
+        }
+        .all{
+        background-color: rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 30%;
+        left: 40%;
+        padding: 3px;
+        border-radius: 15px;
+        text-align: center;
+        }
+        
+        .t2{
+            font-size: 10px;
+            
+            position: absolute;
+            top: 67%;
+            left: 41%;
+            color: black;
+        }
+
+        input{
+            padding: 5px;
+            border: none;
+            outline: none;
+        }
+        button{
+            width: 100%;
+            padding: 5px;
+        }
+        
+        audio{
+            width: 10%;
+            height: 100%;
+            left: 20px;
+        }
+        .t1{
+            color: white;
+            display: none;
+            font-size: 10px;
+            margin: 6px 0 -25 1px;
+        }
+       
+    </style>   
+    
+</head>
+
+
+<body>
+        <div class="all">
+            <h1>Login</h1>  
+                <div>
+                    <input type="text" placeholder="E-mail" id="k1" onchange="valemail()">
+                    <div class="t1" id="mk1">E-mail Inválido</div>
+                    <br><br>
+                </div>
+
+                <div>
+                    <input type="password" placeholder="Senha" id="k2"onchange="valemail()">
+                    <div class="t1" id="mk2">Senha Inválida</div>
+                     <br><br>
+                </div>
+
+                 <button  id="xama" disabled onclick="Delay()" >Enviar</button >
+                 <br><br>
+        </div>
+
+            <div class="t2">
+                <a href="linkpararedirecionar">Esqueceu sua senha?</a>
+                <br><br>
+                <a href="linkpararedirecionar">Criar conta</a>
+            </div>
+
+            <audio controls autoplay>
+                <source src="aud/audio.mp3">
+                </audio>
+            
+            <script>
+                    function valemail(){
+                    const refemail = /^\w+([-+.']\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/;
+                    const login = document.getElementById('k1').value;
+                    const aviso = document.getElementsByClassName('t1').value
+                    var senha = document.getElementById('k2')
+                    
+                    if( refemail.test(login) && senha.value.length > 7){
+                            document.querySelector('#xama').disabled =false;
+                            notificação2();
+                            notificação4()
+                        }  
+                        else if(!refemail.test(login) && senha.value.length > 7){
+                            document.querySelector('#xama').disabled =true;
+                            notificação1();
+                            notificação4()   
+                        }
+                        else if(refemail.test(login) && senha.value.length < 8){
+                            document.querySelector('#xama').disabled =true;
+                            notificação2();
+                            notificação3()
+                        }
+                        else{
+                            document.querySelector('#xama').disabled =true;
+                            notificação1();
+                            notificação3()
+                        }
+                        }
+                    
+                    function notificação1(){
+                    document.getElementById('mk1').style.display="block";
+                    }
+                    function notificação2(){
+                    document.getElementById('mk1').style.display="none";
+                    }
+                    function notificação3(){
+                    document.getElementById('mk2').style.display="block";
+                    }
+                    function notificação4(){
+                    document.getElementById('mk2').style.display="none";
+                    }
+
+                function Delay() {
+                    document.querySelector('#xama').disabled =true;
+                    setTimeout(Finaliza,1000*3);
+                }
+                function Finaliza() {
+                    alert("login bem sucedido");
+                }
+
+            </script>
+        
+        
+</body>
+</html>
